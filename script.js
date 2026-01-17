@@ -51,18 +51,34 @@ form.addEventListener("submit", (event) => {
         created_at: new Date(),
 
     }
-    console.log(newExpense)
     // Chama a função que irá adicionar o item na lista
     expenseAdd(newExpense)
+    console.log(newExpense)
 })
 
 
 // Adiciona um novo item na lista.
 function expenseAdd(newExpense) {
     try {
+        // Recupera todos os itens já existentes na lista.
+        const items = expenseList.children
+        
+        // Percorre cada elemento do array items.
+        for (let item of items) {
+            const existingCategory = item.dataset.category
+
+            if (existingCategory === newExpense.category_id) {
+                alert("Já existe uma despesa com essa categoria.")
+                return
+            }
+        }
+
         // Cria o elemento para adicionar o item(li) na lista (ul).
         const expenseItem = document.createElement("li")
         expenseItem.classList.add("expense")
+
+        // Salva a categoria no próprio li
+        expenseItem.dataset.category = newExpense.category_id
 
         // Cria o ícone da categoria.
         const expenseIcon = document.createElement("img")
