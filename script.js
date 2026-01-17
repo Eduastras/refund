@@ -53,7 +53,7 @@ form.addEventListener("submit", (event) => {
     }
     // Chama a função que irá adicionar o item na lista
     expenseAdd(newExpense)
-    console.log(newExpense)
+    // console.log(newExpense)
 })
 
 
