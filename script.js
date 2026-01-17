@@ -60,11 +60,12 @@ form.addEventListener("submit", (event) => {
 // Adiciona um novo item na lista.
 function expenseAdd(newExpense) {
     try {
-        // Recupera todos os itens já existentes na lista.
+        // Recupera todos os itens(li) já existentes na lista.
         const items = expenseList.children
         
-        // Percorre cada elemento do array items.
+        // Percorre cada elemento(li) da lista/array.
         for (let item of items) {
+            // pega o valor que está no data-category de cada elemento(li) da lista
             const existingCategory = item.dataset.category
 
             if (existingCategory === newExpense.category_id) {
@@ -77,7 +78,7 @@ function expenseAdd(newExpense) {
         const expenseItem = document.createElement("li")
         expenseItem.classList.add("expense")
 
-        // Salva a categoria no próprio li
+        // Cria uma data-category no item(li)
         expenseItem.dataset.category = newExpense.category_id
 
         // Cria o ícone da categoria.
